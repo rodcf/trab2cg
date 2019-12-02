@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Visualizador de Curvas</title>
+		<style>
+			html, body {margin: 0; height: 100%; overflow: hidden; background-color: lightblue;}
+			canvas { width: 100%; height: 100%; background-color: white; }
+			menu { width: 100px; height:100%; background-color: lightblue; }
+		</style>
+	</head>
+	<body>
+		<div class="menu" id="menu" style="background-color: lightblue;">
+				<p class="instrucoes" id="instrucoes" style="font-size:20px; margin-left: 10px; margin-top: 10px; background-color: lightblue;">
+					Aluno: Rodrigo Carvalho de Figueiredo - CG 2019.2 <br>
+					Clique no canvas abaixo com o botão direito para posicionar os pontos de controle
+					e selecione o tipo de curva desejada. Os pontos podem ser movidos com o botão esquerdo.<br>
+					Obs: A curva B-Spline precisa de no mínimo 4 pontos de controle
+					e a curva de Hermite tem seus vetores tangentes gerados aleatoriamente.
+				</p>
+				<div class="btn-group" style="font-size:20px; margin-left: 10px; margin-bottom: 10px; background-color: lightblue;">
+						<button id="bezier" value="1" style="font-size:18px;" onclick="setCurveTypeSelection(this.value)">Bezier(1)</button>
+						<button id="catmullrom" value="2" style="font-size:18px;" onclick="setCurveTypeSelection(this.value)">Catmull-Rom(2)</button>
+						<button id="bspline" value="3" style="font-size:18px;" onclick="setCurveTypeSelection(this.value)">B-Spline(3)</button>
+						<button id="hermite" value="4" style="font-size:18px;" onclick="setCurveTypeSelection(this.value)">Hermite(4)</button>
+						<button id="removeLastPoint" style="font-size:18px;" onclick="removeLastPoint()">Remover último ponto(C)</button>
+						<input type="checkbox" id="showControlPoints" onclick="setShowControlPoints()" checked>
+						<label for="showControlPoints">Mostrar pontos de controle (P)</label>
+						<input type="checkbox" id="showControlPolygon" onclick="setShowControlPolygon()" checked>
+						<label for="showControlPolygon">Mostrar polígono de controle (O)</label>
+				</div>
+		</div>
+		<canvas id="canvas"></canvas>
+		<script src="js/libraries/three.min.js"></script>
+		<script src="js/libraries/math.min.js"></script>
+		<script src="js/libraries/dragcontrols.js"></script>
+		<script src="js/curves/bezier.js"></script>
+		<script src="js/curves/catmullrom.js"></script>
+		<script src="js/curves/bspline.js"></script>
+		<script src="js/curves/hermite.js"></script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
